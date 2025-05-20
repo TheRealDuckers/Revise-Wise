@@ -109,7 +109,7 @@
     </nav>
 
     <div class="container">
-        <h2>Select Your Revision Topic ⬇️</h2>
+        <h2>👋 Hi! Welcome to Revise-Wise! Select a topic below to start!</h2>
         <form id="searchForm">
             <label for="subject">Choose a subject to revise on:</label>
             <select id="subject">
@@ -184,7 +184,7 @@
         let searchUrl = `https://www.bing.com/search?q=${encodeURIComponent(searchQuery)}`;
 
         return `<button style="margin: 10px; padding: 12px; font-size: 16px; background-color: ${buttonColor}; color: white; border: none; border-radius: 8px; cursor: pointer;" onclick="window.open('${searchUrl}', '_blank')">
-                    ${displayName} - "${topic}" (${finalSubject}) for Year ${year}
+                    ${displayName} - "${topic}" (${finalSubject}) for ${year}
                 </button>`;
     }).join("");
 
