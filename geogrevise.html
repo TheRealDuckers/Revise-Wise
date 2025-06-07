@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Climate - Geography - Year 7 | ReviseWise</title>
+    <style>
+        body {
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ggae8gV_F3HT5cmf3JctLd35IfMVNg7O0A&s) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+        }
+        .card-container {
+            width: 350px;
+            padding: 20px;
+            margin: 100px auto;
+            background: linear-gradient(135deg, navy, blue);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: left;
+            position: relative;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .hidden {
+            opacity: 0;
+        }
+        .question {
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+        .answer {
+            font-size: 1.3em;
+            margin-top: 15px;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            color: #ffdd57;
+        }
+        button {
+            margin-top: 0px;
+            padding: 12px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            background: navy;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: blue;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<h1>Geography Revision - Weather and Climate</h1>
+    <div class="card-container" id="cardContainer">
+        <div class="question" id="question">Press "next" to start. Press "show answer" to reveal an answer</div>
+        <div class="answer" id="answer">Press "next" to continue</div>
+        
+        <div class="answer" id="answer"></div>
+    </div>
+
+    <button onclick="showAnswer()">Show Answer</button>
+    <button onclick="prevCard()">Previous</button>
+    <button onclick="nextCard()">Next</button>
+
+    <script>
+        const cards = [
+            { question: "Give examples of different types of weather.", answer: "Rain, Wind, Sun, Snow, Hail, Sleet" },
+            { question: "Describe the difference between weather and climate.", answer: "Weather = short term, Climate = long term" },
+            { question: "Explain how weather effects and influences people lives.", answer: "Weather effects things like transport, social events and sport" },
+            { question: "Describe the different ways we can forecast the weather.", answer: "By looking at past patterns, looking at wind patterns - what types of clouds are going to be pushed our way?" },
+            { question: "Identify the different types of equipment we can use to forecast the weather.", answer: "Satellites, wind direction, rain meters" },
+            { question: "Explain how we can prepare for different types of weather.", answer: "By ensuring ready for Rain (coats), Snow (grit for roads) and other situations" },
+          
+            
+            
+        ];
+        let currentIndex = 0;
+
+        function showAnswer() {
+            const answerElement = document.getElementById('answer');
+            answerElement.style.display = "block";
+            setTimeout(() => {
+                answerElement.style.opacity = "1";
+                answerElement.style.transform = "translateY(0)";
+            }, 50);
+        }
+
+        function updateCard() {
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.classList.add('hidden');
+
+            setTimeout(() => {
+                document.getElementById('question').textContent = cards[currentIndex].question;
+                document.getElementById('answer').textContent = cards[currentIndex].answer;
+                document.getElementById('answer').style.display = "none";
+                document.getElementById('answer').style.opacity = "0";
+                document.getElementById('answer').style.transform = "translateY(20px)";
+                cardContainer.classList.remove('hidden');
+            }, 600);
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCard();
+        }
+
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            updateCard();
+        }
+    </script>
+
+</body>
+</html>
